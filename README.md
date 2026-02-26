@@ -374,6 +374,7 @@ curl -X PUT http://localhost:5000/api/v1/rules \
 ## 🤖 AI Tools Used
 
 - **Claude (Anthropic):** Used to structure the decision pipeline logic, generate boilerplate Flask code, and draft README sections.
+- **ChatGPT (OpenAI):**  Used to validate design decisions, cross-check architecture tradeoffs, and refine the alert fatigue strategy.
 - **Manual changes:** Decision pipeline order, fallback behavior, near-duplicate hashing strategy, and all business logic thresholds were designed and tuned manually based on the problem constraints.
 
 ---
