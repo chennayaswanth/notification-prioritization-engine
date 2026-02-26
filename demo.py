@@ -19,7 +19,7 @@ def pretty(label, response):
     data = json.loads(response.data)
     print(json.dumps(data, indent=2))
 
-print("\n🚀 NOTIFICATION PRIORITIZATION ENGINE - DEMO\n")
+print("\n NOTIFICATION PRIORITIZATION ENGINE - DEMO\n")
 
 # ──────────────────────────────────────────────
 # 1. Health Check
@@ -147,7 +147,7 @@ pretty("11. Update rules (no redeployment needed!)", r)
 r = client.get("/api/v1/users/user_001/history")
 pretty("12. User notification history & fatigue stats", r)
 
-print("\n✅ Demo complete!\n")
+print("\n Demo complete!\n")
 
 # ──────────────────────────────────────────────
 # NEW: AI Scoring demonstration
