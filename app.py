@@ -604,7 +604,7 @@ def internal_error(e):
 
 
 if __name__ == "__main__":
-    print("🚀 Notification Prioritization Engine")
+    print("Notification Prioritization Engine")
     print("   http://localhost:5000")
     print("")
     print("Endpoints:")
