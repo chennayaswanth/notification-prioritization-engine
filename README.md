@@ -240,7 +240,30 @@ View or update suppression rules **without redeployment**.
 View a user's recent notification history and remaining daily/hourly quota.
 
 ---
+## 🤖 AI Importance Scoring Layer
 
+Every notification receives an **importance_score** (0.0 → 1.0) before entering the decision pipeline.
+```python
+importance_score = (
+    type_score        # alert=0.45, system_event=0.40, message=0.30, promotion=0.05
+  + priority_score    # critical=0.35, urgent=0.30, high=0.20, low=0.0
+  + keyword_score     # urgent keywords like "error","down","critical" → +0.07 each
+  + channel_score     # sms → +0.05
+)
+```
+
+| Score Range | Decision |
+|---|---|
+| >= 0.5 + time-sensitive | Force **NOW** — bypass fatigue/quiet hours |
+| <= 0.1 + not urgent | Force **NEVER** — low-value, suppress |
+| Everything else | Continue through normal pipeline |
+
+**Example scores from live demo:**
+- Critical server-down alert → **1.0** (sent immediately)
+- Meeting reminder (high priority) → **0.45** (normal pipeline)
+- Promotional sale email → **0.0** (suppressed automatically)
+
+> In production, this scoring layer would be replaced by a trained ML model or LLM classifier.
 ## 🔁 Duplicate Prevention
 
 Two complementary strategies:
